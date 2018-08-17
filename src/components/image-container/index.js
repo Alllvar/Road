@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import Item from './item';
-import { IMAGES } from '../../fixtures';
 
 class ImageContainer extends Component {
 
     state = {
         images: []
-    }
+    };
 
     componentDidMount() {
         window.fetch('https://pixabay.com/api/?key=9797284-4a52a8537958550b9ce0d956f')
             .then(response => {
-                console.log(response)
                 return response.json();
             })
             .then(data => {
@@ -29,7 +27,7 @@ class ImageContainer extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
             	<h1 className="heading">Image Gallery</h1>
                 <div className="gallery">
                     {this.renderItems()}
