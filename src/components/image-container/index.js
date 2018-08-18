@@ -10,7 +10,7 @@ class ImageContainer extends Component {
     componentDidMount() {
         window.fetch('https://pixabay.com/api/?key=9797284-4a52a8537958550b9ce0d956f')
             .then(response => {
-                return response.json();
+                return response.json(); 
             })
             .then(data => {
                 this.setState({
