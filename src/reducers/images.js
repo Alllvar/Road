@@ -18,7 +18,6 @@ export default function (state = initialState, action) {
             const { entities } = action.payload;
 
             return {
-                ...state,
                 entities,
                 isFetching: false,
             };

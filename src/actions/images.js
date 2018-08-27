@@ -10,7 +10,7 @@ export const fetchImages = () => async function (dispatch) {
     dispatch(request());
 
     const response = await fetch(`https://pixabay.com/api/?key=${KEY}`);
-    const data = await response.json();
+    const { hits } = await response.json();
 
-    dispatch(receive(data.hits));
+    dispatch(receive(hits));
 };

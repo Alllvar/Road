@@ -3,10 +3,6 @@ import Loader from '../library/loader';
 import Item from './item';
 
 class ImageContainer extends Component {
-    static defaultProps = {
-        entities: []
-    };
-
     componentDidMount() {
         this.props.fetch();
     }
