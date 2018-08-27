@@ -1,36 +1,30 @@
 import React, { Component } from 'react';
+import Loader from '../library/loader';
 import Item from './item';
 
 class ImageContainer extends Component {
-
-    state = {
-        images: []
+    static defaultProps = {
+        entities: []
     };
 
     componentDidMount() {
-        window.fetch('https://pixabay.com/api/?key=9797284-4a52a8537958550b9ce0d956f')
-            .then(response => {
-                return response.json(); 
-            })
-            .then(data => {
-                this.setState({
-                    images: data.hits
-                })
-            })
+        this.props.fetch();
     }
 
     renderItems() {
-        return this.state.images.map(image => {
+        return this.props.entities.map(image => {
             return <Item {...image} key={image.id} />;
         })
     }
 
     render() {
+        const { isFetching } = this.props;
+
         return (
             <div>
             	<h1 className="heading">Image Gallery</h1>
                 <div className="gallery">
-                    {this.renderItems()}
+                    {isFetching ? <Loader /> : this.renderItems()}
                 </div>
             </div>
 

@@ -1,0 +1,2 @@
+export const IMAGES_REQUEST = 'IMAGES_REQUEST';
+export const IMAGES_RECEIVE = 'IMAGES_RECEIVE';

@@ -77,6 +77,37 @@
     z-index: 100;
 }
 
+.loader {
+    position: absolute;
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    top: 50%;
+    left: 50%;
+    margin: -32px 0 0 -32px;
+}
+
+.loader:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff #ccc #fff #ccc;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 800px) {
     .gallery {
         -moz-column-count:    2;
