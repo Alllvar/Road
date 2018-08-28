@@ -22,7 +22,11 @@ class ImageContainer extends Component {
 
         return (
             <div>
-            	<h1 className="heading">Image Gallery</h1>
+                <h1 className="heading">Image Gallery</h1>
+                <div className="searchContainer">
+                <input type="text" className="gallerySearch"/>
+                <button className="searchBtn" onClick="Search()">Search</button>
+                </div>
                 <div className="gallery">
                     {isFetching ? <Loader /> : this.renderItems()}
                 </div>
