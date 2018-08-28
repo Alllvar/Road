@@ -1,3 +1,36 @@
+.gallerySearch {
+    width: 280px;
+    height: 25px;
+    border: 2px solid gainsboro;
+    border-radius: 7px; 
+}
+  
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px; 
+}
+  
+.searchBtn {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    background: #b8b6b6;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    margin-left: 10px;
+    position: relative;
+    bottom: 7px; 
+}
+  
+.searchBtn:hover {
+    background: #999999; 
+}
+  
+
 .overlay {
     position: absolute;
     top: 0;
