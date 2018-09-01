@@ -35,6 +35,7 @@ const styles = theme => ({
 
 
 class ImageContainer extends Component {
+<<<<<<< HEAD
     static defaultProps = {
         entities: []
     };
@@ -42,6 +43,8 @@ class ImageContainer extends Component {
     state = {
         query: null
     }
+=======
+>>>>>>> 8f08231e374d4b23ad65801fc0e758832735380c
     componentDidMount() {
         this.props.fetch();
     }
