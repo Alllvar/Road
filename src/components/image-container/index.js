@@ -3,9 +3,9 @@ import Loader from '../library/loader';
 import Item from './item';
 
 import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -16,38 +16,46 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
-    input: {
-        display: 'none',
-    },
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-      },
-      formControl: {
+    },
+    formControl: {
         margin: theme.spacing.unit,
         minWidth: 120,
-      },
-      selectEmpty: {
+    },
+    selectEmpty: {
         marginTop: theme.spacing.unit * 2,
-      },
+    },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    input: {
+        margin: theme.spacing.unit,
+    },
 });
 
-
-
 class ImageContainer extends Component {
-<<<<<<< HEAD
     static defaultProps = {
         entities: []
     };
 
     state = {
-        query: null
+        query: null,
+        type: '',
+        order: '',
+        per_page: '',
+        orientation: '',
+        editors_choice: '',
+        category: '',
+        colors: '',
     }
-=======
->>>>>>> 8f08231e374d4b23ad65801fc0e758832735380c
+
     componentDidMount() {
         this.props.fetch();
     }
+
     handleSearch(event) {
         this.setState({
             query: event.target.value
@@ -55,191 +63,186 @@ class ImageContainer extends Component {
     }
 
     search() {
-        this.props.fetch(this.state.query)
+        this.props.fetch(this.state)
     }
+
     renderItems() {
         return this.props.entities.map(image => {
             return <Item {...image} key={image.id} />;
         })
     }
+
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
-      };
+    };
+
     render() {
         const { isFetching, classes } = this.props;
         return (
             <div>
                 <h1 className="heading">Image Gallery</h1>
                 <div className="searchContainer">
-                    <input type="text" className="gallerySearch" onChange={this.handleSearch.bind(this)} />
-                    <div>
-                        <Button variant="contained" color="primary" className={classes.button} onClick={this.search.bind(this)}>Search
-                        </Button>
+                    <div className={classes.container}>
+                        <Input className={classes.input} onChange={this.handleSearch.bind(this)} />
+                        <Button variant="contained" color="primary" className={classes.button} onClick={this.search.bind(this)}>Search</Button>
                     </div>
                 </div>
                 <div className="select">
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="age-simple">Image Type</InputLabel>
-                  <Select
-                    value={this.state.age}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
-                    }}>
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>All</MenuItem>
-                    <MenuItem value={20}>Photo</MenuItem>
-                    <MenuItem value={40}>Illustranition</MenuItem>
-                    <MenuItem value={50}>Vector</MenuItem>
-                  </Select>
-                </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="age-simple">Order</InputLabel>
-                  <Select
-                    value={this.state.age}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
-                    }}>
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Popular</MenuItem>
-                    <MenuItem value={20}>Latest</MenuItem>
-                  </Select>
-                </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="age-simple">Per page</InputLabel>
-                  <Select
-                    value={this.state.age}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
-                    }}>
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>20</MenuItem>
-                    <MenuItem value={20}>50</MenuItem>
-                    <MenuItem value={20}>100</MenuItem>
-                    <MenuItem value={20}>150</MenuItem>
-                    <MenuItem value={20}>200</MenuItem>
-                  </Select>
-                </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="age-simple">Orientation</InputLabel>
-                  <Select
-                    value={this.state.age}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
-                    }}>
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>All</MenuItem>
-                    <MenuItem value={20}>Horizontal</MenuItem>
-                    <MenuItem value={40}>Vertical</MenuItem>
-                  </Select>
-                </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="age-simple">Editors choice</InputLabel>
-                  <Select
-                    value={this.state.age}
-                    onChange={this.handleChange}
-                    inputProps={{
-                      name: 'age',
-                      id: 'age-simple',
-                    }}>
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Yes</MenuItem>
-                    <MenuItem value={20}>No</MenuItem>
-                  </Select>
-                </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-simple">Category</InputLabel>
-                <Select
-                  value={this.state.age}
-                  onChange={this.handleChange}
-                  inputProps={{
-                    name: 'age',
-                    id: 'age-simple',
-                  }}>
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>fashion</MenuItem>
-                  <MenuItem value={20}>nature</MenuItem>
-                  <MenuItem value={40}>backgrounds</MenuItem>
-                  <MenuItem value={20}>science</MenuItem>
-                  <MenuItem value={20}>education</MenuItem>
-                  <MenuItem value={20}>people</MenuItem>
-                  <MenuItem value={20}>feelings</MenuItem>
-                  <MenuItem value={20}>religion</MenuItem>
-                  <MenuItem value={20}>health</MenuItem>
-                  <MenuItem value={20}>places</MenuItem>
-                  <MenuItem value={20}>animals</MenuItem>
-                  <MenuItem value={20}>industry</MenuItem>
-                  <MenuItem value={20}>food</MenuItem>
-                  <MenuItem value={20}>computer</MenuItem>
-                  <MenuItem value={20}>sports</MenuItem>
-                  <MenuItem value={20}>transportation</MenuItem>
-                  <MenuItem value={20}>travel</MenuItem>
-                  <MenuItem value={20}>buildings</MenuItem>
-                  <MenuItem value={20}>business</MenuItem>
-                  <MenuItem value={20}>music</MenuItem>
-                </Select>
-              </FormControl>
-                </form>
-                <form className={classes.root} autoComplete="off">
-                <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-simple">Colors</InputLabel>
-                <Select
-                  value={this.state.age}
-                  onChange={this.handleChange}
-                  inputProps={{
-                    name: 'age',
-                    id: 'age-simple',
-                  }}>
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>grayscale</MenuItem>
-                  <MenuItem value={20}>transparent</MenuItem>
-                  <MenuItem value={40}>red</MenuItem>
-                  <MenuItem value={20}>orange</MenuItem>
-                  <MenuItem value={20}>yellow</MenuItem>
-                  <MenuItem value={20}>green</MenuItem>
-                  <MenuItem value={20}>turquoise</MenuItem>
-                  <MenuItem value={20}>blue</MenuItem>
-                  <MenuItem value={20}>lilac</MenuItem>
-                  <MenuItem value={20}>pink</MenuItem>
-                  <MenuItem value={20}>white</MenuItem>
-                  <MenuItem value={20}>gray</MenuItem>
-                  <MenuItem value={20}>black</MenuItem>
-                  <MenuItem value={20}>brown</MenuItem>
-                </Select>
-              </FormControl>
-                </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Image Type</InputLabel>
+                            <Select
+                                value={this.state.type}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'type',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="all">All</MenuItem>
+                                <MenuItem value="photo">Photo</MenuItem>
+                                <MenuItem value="illustration">Illustration</MenuItem>
+                                <MenuItem value="vector">Vector</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Order</InputLabel>
+                            <Select
+                                value={this.state.order}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'order',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="popular">Popular</MenuItem>
+                                <MenuItem value="latest">Latest</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Per page</InputLabel>
+                            <Select
+                                value={this.state.per_page}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'per_page',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="20">20</MenuItem>
+                                <MenuItem value="50">50</MenuItem>
+                                <MenuItem value="100">100</MenuItem>
+                                <MenuItem value="150">150</MenuItem>
+                                <MenuItem value="200">200</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Orientation</InputLabel>
+                            <Select
+                                value={this.state.orientation}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'orientation',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="all">All</MenuItem>
+                                <MenuItem value="horizontal">Horizontal</MenuItem>
+                                <MenuItem value="vertical">Vertical</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Editors choice</InputLabel>
+                            <Select
+                                value={this.state.editors_choice}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'editors_choice',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="true">Yes</MenuItem>
+                                <MenuItem value="false">No</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Category</InputLabel>
+                            <Select
+                                value={this.state.category}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'category',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="fashion">fashion</MenuItem>
+                                <MenuItem value="nature">nature</MenuItem>
+                                <MenuItem value="backgrounds">backgrounds</MenuItem>
+                                <MenuItem value="science">science</MenuItem>
+                                <MenuItem value="education">education</MenuItem>
+                                <MenuItem value="people">people</MenuItem>
+                                <MenuItem value="feelings">feelings</MenuItem>
+                                <MenuItem value="religion">religion</MenuItem>
+                                <MenuItem value="health">health</MenuItem>
+                                <MenuItem value="places">places</MenuItem>
+                                <MenuItem value="animals">animals</MenuItem>
+                                <MenuItem value="industry">industry</MenuItem>
+                                <MenuItem value="food">food</MenuItem>
+                                <MenuItem value="computer">computer</MenuItem>
+                                <MenuItem value="sports">sports</MenuItem>
+                                <MenuItem value="transportation">transportation</MenuItem>
+                                <MenuItem value="travel">travel</MenuItem>
+                                <MenuItem value="buildings">buildings</MenuItem>
+                                <MenuItem value="business">business</MenuItem>
+                                <MenuItem value="music">music</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
+                    <form className={classes.root} autoComplete="off">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel>Colors</InputLabel>
+                            <Select
+                                value={this.state.colors}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'colors',
+                                }}>
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value="grayscale">grayscale</MenuItem>
+                                <MenuItem value="transparent">transparent</MenuItem>
+                                <MenuItem value="red">red</MenuItem>
+                                <MenuItem value="orange">orange</MenuItem>
+                                <MenuItem value="yellow">yellow</MenuItem>
+                                <MenuItem value="green">green</MenuItem>
+                                <MenuItem value="turquoise">turquoise</MenuItem>
+                                <MenuItem value="blue">blue</MenuItem>
+                                <MenuItem value="lilac">lilac</MenuItem>
+                                <MenuItem value="pink">pink</MenuItem>
+                                <MenuItem value="white">white</MenuItem>
+                                <MenuItem value="gray">gray</MenuItem>
+                                <MenuItem value="black">black</MenuItem>
+                                <MenuItem value="brown">brown</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </form>
                 </div>
                 <div className="gallery">
                     {isFetching ? <Loader /> : this.renderItems()}
